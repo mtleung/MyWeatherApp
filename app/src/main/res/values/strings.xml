@@ -7,4 +7,6 @@
     <string name="search_city_hint">City</string>
     <string name="btn_search_city">Get City Weather</string>
     <string name="btn_history_city">Get Weather Forecast</string>
+
+    <string name="forecast_error">Failed to retrieve forecast</string>
 </resources>

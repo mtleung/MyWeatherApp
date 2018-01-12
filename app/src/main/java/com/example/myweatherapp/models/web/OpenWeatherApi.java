@@ -16,4 +16,11 @@ public interface OpenWeatherApi {
             @Query("q") String city,
             @Query("units") String unit
     );
+
+    @GET("forecast")
+    LiveData<ApiResponse<ForecastResponse>> getForecastByCity(
+            @Query("APPID") String appId,
+            @Query("q")String city,
+            @Query("units") String unit
+    );
 }

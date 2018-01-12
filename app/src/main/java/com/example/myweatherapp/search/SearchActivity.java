@@ -2,6 +2,7 @@ package com.example.myweatherapp.search;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -16,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.myweatherapp.R;
 import com.example.myweatherapp.databinding.ActivitySearchBinding;
 import com.example.myweatherapp.di.ViewModelFactory;
+import com.example.myweatherapp.forecast.ForecastActivity;
 import com.example.myweatherapp.models.WeatherMain;
 
 public class SearchActivity extends AppCompatActivity {
@@ -108,6 +110,11 @@ public class SearchActivity extends AppCompatActivity {
             }
             dismissKeyboard(view.getWindowToken());
             viewModel.weatherByCityName(city);
+        });
+
+        binding.btnGetHistory.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ForecastActivity.class);
+            startActivity(intent);
         });
     }
 

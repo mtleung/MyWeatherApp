@@ -1,8 +1,10 @@
 package com.example.myweatherapp.repository;
 
 import android.arch.lifecycle.LiveData;
+import android.util.Log;
 
 import com.example.myweatherapp.models.web.ApiResponse;
+import com.example.myweatherapp.models.web.ForecastResponse;
 import com.example.myweatherapp.models.web.OpenWeatherService;
 import com.example.myweatherapp.models.web.WeatherResponse;
 
@@ -11,6 +13,8 @@ import com.example.myweatherapp.models.web.WeatherResponse;
  */
 
 public class WeatherRepository {
+    private final String TAG = WeatherRepository.class.getSimpleName();
+
     private volatile static WeatherRepository INSTANCE = null;
 
     private final OpenWeatherService openWeatherService;
@@ -36,6 +40,10 @@ public class WeatherRepository {
 
     public LiveData<ApiResponse<WeatherResponse>> getWeatherByCity(String city) {
         return openWeatherService.getWeatherByCity(city);
+    }
+
+    public LiveData<ApiResponse<ForecastResponse>> getForecastByCity(String city) {
+        return openWeatherService.getForecastByCity(city);
     }
 
     public String getLastCity() {

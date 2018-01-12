@@ -27,4 +27,8 @@ public class OpenWeatherService {
     public LiveData<ApiResponse<WeatherResponse>> getWeatherByCity(String city) {
         return api.getWeatherByCity(openWeatherId, city, "metric");
     }
+
+    public LiveData<ApiResponse<ForecastResponse>> getForecastByCity(String city) {
+        return api.getForecastByCity(openWeatherId, city, "metric");
+    }
 }

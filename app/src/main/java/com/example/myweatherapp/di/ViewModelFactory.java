@@ -5,8 +5,9 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 import android.support.annotation.NonNull;
 
-import com.example.myweatherapp.search.SearchViewModel;
+import com.example.myweatherapp.forecast.ForecastViewModel;
 import com.example.myweatherapp.repository.WeatherRepository;
+import com.example.myweatherapp.search.SearchViewModel;
 
 /**
  * Created by marco.t.leung on 10/1/2018.
@@ -38,9 +39,12 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(SearchViewModel.class)){
+        if (modelClass.isAssignableFrom(SearchViewModel.class)) {
             //noinspection unchecked
             return (T) new SearchViewModel(weatherRepository);
+        }
+        if (modelClass.isAssignableFrom(ForecastViewModel.class)) {
+            return (T) new ForecastViewModel(weatherRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class " + modelClass.getName());
     }

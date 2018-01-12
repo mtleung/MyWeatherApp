@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    <data>
+        <variable
+            name="forecast"
+            type="com.example.myweatherapp.models.ForecastMain"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/forecast_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/forecast_temp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{forecast.date}"
+            tools:text="24/4" />
+        <TextView
+            android:id="@+id/forecast_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/forecast_date"
+            app:layout_constraintEnd_toStartOf="@id/forecast_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{String.valueOf(forecast.temp)}"
+            tools:text="24C"/>
+        <ImageView
+            android:id="@+id/forecast_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            app:layout_constraintStart_toEndOf="@id/forecast_temp"
+            app:layout_constraintEnd_toStartOf="@id/forecast_temp_min"
+            app:layout_constraintBottom_toBottomOf="@id/forecast_date"
+            app:layout_constraintTop_toTopOf="@id/forecast_date"
+            imageUrl="@{forecast.iconUrl}"
+            tools:src="?android:attr/alertDialogIcon"/>
+        <TextView
+            android:id="@+id/forecast_temp_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/forecast_icon"
+            app:layout_constraintEnd_toStartOf="@id/forecast_temp_max"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{String.valueOf(forecast.tempMin)}"
+            tools:text="20C"/>
+        <TextView
+            android:id="@+id/forecast_temp_max"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/forecast_temp_min"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@{String.valueOf(forecast.tempMax)}"
+            tools:text="26C"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

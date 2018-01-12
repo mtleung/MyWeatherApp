@@ -5,9 +5,11 @@ package com.example.myweatherapp.util;
  */
 
 import android.arch.lifecycle.LiveData;
+import android.util.Log;
 
 import com.example.myweatherapp.models.web.ApiError;
 import com.example.myweatherapp.models.web.ApiResponse;
+import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -43,13 +45,14 @@ public class LiveDataCallAdapter<R> implements CallAdapter<R, LiveData<ApiRespon
                     call.enqueue(new Callback<R>() {
                         @Override
                         public void onResponse(Call<R> call, Response<R> response) {
+                            Log.d("onResponse", new Gson().toJson(response));
                             postValue(new ApiResponse(response.body(), null));
                         }
 
                         @Override
                         public void onFailure(Call<R> call, Throwable throwable) {
-                            postValue(new ApiResponse(null, new ApiError(500,
-                                    throwable.getMessage())));
+                            postValue(new ApiResponse(null,
+                                    new ApiError(500, throwable.getMessage())));
                         }
                     });
                 }

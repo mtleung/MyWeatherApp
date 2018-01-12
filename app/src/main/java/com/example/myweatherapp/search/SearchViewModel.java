@@ -60,8 +60,6 @@ public class SearchViewModel extends ViewModel {
     }
 
     private void addWeatherSources() {
-        Log.d(TAG, "Setting weather sources");
-
         weatherByCityResponse = Transformations.switchMap(cityName, (name) -> {
             weatherData.setValue(null);
             if (name == null || name.isEmpty()) {
@@ -69,10 +67,8 @@ public class SearchViewModel extends ViewModel {
             }
             return repository.getWeatherByCity(name);
         });
-        weatherData.addSource(weatherByCityResponse, (response) -> {
-            Log.d(TAG, "WeatherResponse has changed");
-            processWeatherResponse(response);
-        });
+
+        weatherData.addSource(weatherByCityResponse, this::processWeatherResponse);
 
         isLoading.addSource(cityName, (name) -> {
             updateLoadingStatus();
@@ -109,7 +105,6 @@ public class SearchViewModel extends ViewModel {
     }
 
     private void processWeatherResponse(ApiResponse<WeatherResponse> apiResponse) {
-        Log.d(TAG, "processWeatherResponse");
         if (apiResponse == null || apiResponse.getData() == null) {
             // Error
             errors.setValue(String.format("Failed to fetch weather for %s", cityName.getValue()));
@@ -121,12 +116,8 @@ public class SearchViewModel extends ViewModel {
             return;
         }
         repository.setLastCity(cityName.getValue());
-        updateWeather(apiResponse.getData());
-    }
 
-    private void updateWeather(WeatherResponse response) {
-        Log.d(TAG, "updateWeather");
-        WeatherMain weatherMain = WeatherMain.factory(response);
+        WeatherMain weatherMain = WeatherMain.factory(apiResponse.getData());
         weatherData.setValue(new ApiResponse(weatherMain, null));
     }
 }

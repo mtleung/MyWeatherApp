@@ -19,12 +19,12 @@ buildscript {
 ext {
     // SDK and tools
     minSdkVersion = 14
-    targetSdkVersion = 26
-    compileSdkVersion = 26
-    buildToolsVersion = '26.0.2'
+    targetSdkVersion = 27
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.2'
 
     // App dependencies
-    supportLibraryVersion = '26.1.0'
+    supportLibraryVersion = '27.0.2'
     constraintLayoutVersion = '1.0.2'
     junitVersion = '4.12'
     runnerVersion = '1.0.1'
@@ -39,7 +39,7 @@ ext {
 
     gsonVersion = "2.8.2"
     retrofitVersion = "2.3.0"
-    glideVersion = "4.3.1"
+    glideVersion = "4.4.0"
 }
 
 allprojects {
