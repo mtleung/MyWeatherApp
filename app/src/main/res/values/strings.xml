@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyWeatherApp</string>
+    <string name="empty_city">Please enter a city name</string>
+    <string name="openweathermap_key">cf6490bdcf308f3c606ff3659cbcafb0</string>
+
+    <string name="search_no_weather">Please type a city name to get started</string>
+    <string name="search_city_hint">City</string>
+    <string name="btn_search_city">Get City Weather</string>
+    <string name="btn_history_city">Get Weather Forecast</string>
+</resources>

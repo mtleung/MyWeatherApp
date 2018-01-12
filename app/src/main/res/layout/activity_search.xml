@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.myweatherapp.search.SearchViewModel" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:context=".search.SearchActivity">
+
+        <TextView
+            android:id="@+id/txtNoCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_no_weather"
+            android:textSize="16dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            tools:visibility="visible"
+            />
+
+
+        <EditText
+            android:id="@+id/editCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/search_city_hint"
+            android:text="@{viewModel.cityName.value}"
+            android:inputType="textPersonName"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            />
+
+        <Button
+            android:id="@+id/btnGetCity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_search_city"
+            android:layout_below="@+id/editCity"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+
+            />
+
+        <Button
+            android:id="@+id/btnGetHistory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_history_city"
+            android:layout_below="@+id/btnGetCity"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+
+            />
+
+        <RelativeLayout
+            android:id="@+id/containerWeather"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_below="@+id/btnGetHistory"
+            >
+            <!-- City Name-->
+            <TextView
+                android:id="@+id/txtCity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="CityName"
+                android:textSize="30dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp"
+                android:layout_alignParentTop="true"
+
+                />
+
+            <!-- Icon -->
+            <ImageView
+                android:id="@+id/imgIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:src="?android:attr/alertDialogIcon"
+                android:layout_alignTop="@+id/txtMin"
+                android:layout_alignBottom="@+id/txtMax"
+                android:paddingRight="16dp"
+                android:layout_marginLeft="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <!--Min-->
+            <TextView
+                android:id="@+id/txtMin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txtCity"
+                android:layout_toEndOf="@+id/imgIcon"
+                android:layout_toRightOf="@+id/imgIcon"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="20dp"
+                tools:text="Min" />
+
+            <!--Max-->
+            <TextView
+                android:id="@+id/txtMax"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtMin"
+                android:layout_toEndOf="@+id/imgIcon"
+                android:layout_toRightOf="@+id/imgIcon"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:textSize="20dp"
+                tools:text="Min" />
+
+
+            <!--Main-->
+            <TextView
+                android:id="@+id/txtMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Main..."
+                android:textSize="28dp"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center"
+                android:layout_below="@+id/txtMax"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"/>
+
+            <!--Description-->
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/txtMain"
+                android:layout_marginTop="16dp"
+                tools:text="Description"
+                android:textAlignment="center" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="35dp" />
+
+    </RelativeLayout>
+</layout>
