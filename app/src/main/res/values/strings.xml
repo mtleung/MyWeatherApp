@@ -9,4 +9,10 @@
     <string name="btn_history_city">Get Weather Forecast</string>
 
     <string name="forecast_error">Failed to retrieve forecast</string>
+
+
+    <string name="test">This is english\nthis is the second line &gt; this is the third line</string>
+
+    <string name="button_1">First Button</string>
+    <string name="button_2">Second Button</string>
 </resources>

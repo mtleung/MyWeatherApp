@@ -18,6 +18,7 @@ import retrofit2.Call;
 import retrofit2.CallAdapter;
 import retrofit2.Callback;
 import retrofit2.Response;
+import timber.log.Timber;
 
 /**
  * A Retrofit adapter that converts the Call into a LiveData of ApiResponse.
@@ -45,7 +46,7 @@ public class LiveDataCallAdapter<R> implements CallAdapter<R, LiveData<ApiRespon
                     call.enqueue(new Callback<R>() {
                         @Override
                         public void onResponse(Call<R> call, Response<R> response) {
-                            Log.d("onResponse", new Gson().toJson(response));
+                            Timber.d(new Gson().toJson(response));
                             postValue(new ApiResponse(response.body(), null));
                         }
 

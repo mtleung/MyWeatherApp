@@ -17,6 +17,8 @@ import com.example.myweatherapp.repository.WeatherRepository;
 import java.util.ArrayList;
 import java.util.List;
 
+import timber.log.Timber;
+
 /**
  * Created by marco.t.leung on 12/1/2018.
  */
@@ -55,8 +57,8 @@ public class ForecastViewModel extends ViewModel {
         isLoading = Transformations.switchMap(forecastData, forecast -> {
             boolean status = forecast.getData() == null && forecast.getError() == null;
 
-            Log.d(TAG, String.format("isLoading %s (%s) (%s)",
-                    status, forecast.getData() != null, forecast.getError() != null));
+            Timber.d("isLoading %s (%s) (%s)",
+                    status, forecast.getData() != null, forecast.getError() != null);
 
             MutableLiveData<Boolean> output = new MutableLiveData<>();
             output.setValue(status);

@@ -13,6 +13,8 @@ import com.example.myweatherapp.models.web.ApiResponse;
 import com.example.myweatherapp.models.web.WeatherResponse;
 import com.example.myweatherapp.repository.WeatherRepository;
 
+import timber.log.Timber;
+
 /**
  * Created by marco.t.leung on 10/1/2018.
  */
@@ -37,20 +39,20 @@ public class SearchViewModel extends ViewModel {
 
 
     public SearchViewModel(WeatherRepository repository) {
-        Log.d(TAG, "Constructor");
+        Timber.d("Constructor");
         this.repository = repository;
         addWeatherSources();
         initValues();
     }
 
     void weatherByCityName(String city) {
-        Log.d(TAG,"weatherByCityName " + city);
+        Timber.d("weatherByCityName %s", city);
         cityName.postValue(city);
     }
 
     @Override
     protected void onCleared() {
-        Log.d(TAG, "onCleared");
+        Timber.d("onCleared");
         weatherData.removeSource(weatherByCityResponse);
         super.onCleared();
     }

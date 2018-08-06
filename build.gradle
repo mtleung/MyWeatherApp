@@ -24,7 +24,7 @@ ext {
     buildToolsVersion = '27.0.2'
 
     // App dependencies
-    supportLibraryVersion = '27.0.2'
+    supportLibraryVersion = '27.1.0'
     constraintLayoutVersion = '1.0.2'
     junitVersion = '4.12'
     runnerVersion = '1.0.1'
@@ -33,13 +33,15 @@ ext {
 
     daggerVersion = '2.11'
 
-    lifeCycleVersion = "1.0.0"
+    lifeCycleVersion = "1.1.1"
     roomVersion = "1.0.0"
-    pagingVersion = "1.0.0-alpha4-1"
+    pagingVersion = "1.0.0-alpha7"
 
     gsonVersion = "2.8.2"
     retrofitVersion = "2.3.0"
     glideVersion = "4.4.0"
+
+    timberVersion = "4.6.1"
 }
 
 allprojects {

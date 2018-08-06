@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -13,6 +14,8 @@ import android.widget.Toast;
 import com.example.myweatherapp.R;
 import com.example.myweatherapp.databinding.ActivityForecastBinding;
 import com.example.myweatherapp.di.ViewModelFactory;
+
+import timber.log.Timber;
 
 /**
  * Created by marco.t.leung on 12/1/2018.
@@ -46,16 +49,16 @@ public class ForecastActivity extends AppCompatActivity {
 
     private void initViewModel() {
         viewModel.getForecastData().observe(this, response -> {
-            Log.d(TAG, "Forecast updated");
+            Timber.d( "Forecast updated");
             if (response == null) {
-                Log.d(TAG, "No Response");
+                Timber.d("No Response");
                 binding.forecastList.setVisibility(View.GONE);
                 binding.forecastError.setVisibility(View.VISIBLE);
                 return;
             }
             // Error case
             if (response.getError() != null) {
-                Log.d(TAG, "Forecast error");
+                Timber.d("Forecast error");
                 showWarning(String.format("%s: %s",
                         response.getError().getStatusCode(),
                         response.getError().getMessage()));
@@ -65,13 +68,13 @@ public class ForecastActivity extends AppCompatActivity {
             }
 
             if (response.getData() == null) {
-                Log.d(TAG, "No Data");
+                Timber.d("No Data");
                 binding.forecastError.setVisibility(View.VISIBLE);
                 binding.forecastList.setVisibility(View.GONE);
                 return;
             }
             // Normal case
-            Log.d(TAG, "Forecast has data");
+            Timber.d("Forecast has data");
             binding.forecastError.setVisibility(View.GONE);
             binding.forecastList.setVisibility(View.VISIBLE);
 

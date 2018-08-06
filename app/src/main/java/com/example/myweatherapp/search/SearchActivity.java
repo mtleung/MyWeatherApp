@@ -20,6 +20,8 @@ import com.example.myweatherapp.di.ViewModelFactory;
 import com.example.myweatherapp.forecast.ForecastActivity;
 import com.example.myweatherapp.models.WeatherMain;
 
+import timber.log.Timber;
+
 public class SearchActivity extends AppCompatActivity {
     private final String TAG = SearchActivity.class.getSimpleName();
 
@@ -62,7 +64,7 @@ public class SearchActivity extends AppCompatActivity {
 
         viewModel.getCityName().observe(this, cityName -> {
             boolean hasCity = cityName != null && !cityName.isEmpty();
-            Log.d(TAG, String.format("CityName: %s (%s)", cityName, hasCity));
+            Timber.d(String.format("CityName: %s (%s)", cityName, hasCity));
             binding.txtNoCity.setVisibility(hasCity ? View.GONE : View.VISIBLE);
             if (hasCity) {
                 return;
